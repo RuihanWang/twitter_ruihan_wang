@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import include, path
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,11 @@ SECRET_KEY = '%6ma6n9cw!ar3t+@x9ox-&^un-gx$8_6!zm*dzeaqsb5ef=lkn'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.33.10', 'localhost']
-
+INTERNAL_IPS = [
+    # ...
+    "172.17.0.1",
+    # ...
+]
 
 # Application definition
 
@@ -37,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'rest_framework',
+    'tweets',
 ]
 
 REST_FRAMEWORK = {
@@ -53,7 +62,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
 
 ROOT_URLCONF = 'twitter.urls'
 

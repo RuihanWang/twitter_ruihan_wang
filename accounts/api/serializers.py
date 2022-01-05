@@ -5,7 +5,13 @@ from rest_framework import serializers, exceptions
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['username',  'email']
+
+
+class UserSerializerForTweet(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'id']
 
 
 class LoginSerializer(serializers.Serializer):

@@ -13,6 +13,9 @@ class UserSerializerForTweet(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['username', 'id']
 
+class UserSerializerForComment(UserSerializerForTweet):
+    pass
+
 
 class UserSerializerForFriendship(UserSerializerForTweet):
     pass
